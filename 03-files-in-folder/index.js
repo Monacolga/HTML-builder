@@ -17,8 +17,9 @@ fs.readdir(folderPath, { withFileTypes: true }, async (err, files) => {
         const fileSizeInBytes = stats.size;
         const fileSizeInKilobytes = fileSizeInBytes / 1024;
         const fileExtension = path.extname(filePath).slice(1);
+        const fileName = path.basename(file.name, path.extname(file.name));
         console.log(
-          `${file.name}-${fileExtension}-${fileSizeInKilobytes.toFixed(3)}kb`,
+          `${fileName}-${fileExtension}-${fileSizeInKilobytes.toFixed(3)}kb`,
         );
       } catch (err) {
         console.error(`Error reading file: ${filePath}`, err);
